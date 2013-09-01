@@ -1,0 +1,5 @@
+# Add new items to this list, which max stack you want to modify.
+# Full list of ids can be found here: http://minecraft-ids.grahamedgecombe.com/
+# Please note that the id list might not be updated.
+itemstack:
+- 354,64

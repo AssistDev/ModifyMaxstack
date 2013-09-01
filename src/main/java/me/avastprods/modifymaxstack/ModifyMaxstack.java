@@ -20,6 +20,7 @@ public class ModifyMaxstack extends JavaPlugin {
 				size = Integer.valueOf(split[1]);
 			} catch (NumberFormatException ex) {
 				System.out.println("An error occured while parsing integer. at:" + split[1]);
+				return;
 			}
 
 			modifyMaxStack(item, size);

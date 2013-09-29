@@ -2,7 +2,7 @@ package main.java.me.avastprods.modifymaxstack;
 
 import java.lang.reflect.Field;
 
-import net.minecraft.server.v1_6_R2.Item;
+import net.minecraft.server.v1_6_R3.Item;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -12,14 +12,21 @@ public class ModifyMaxstack extends JavaPlugin {
 		saveDefaultConfig();
 
 		for (String str : getConfig().getStringList("itemstack")) {
-			String[] split = str.split(",");
-			Item item = Item.byId[Integer.parseInt(split[0])];
+			String[] split = str.split(":");
+
+			Item item = null;
 			int size = 0;
 
 			try {
+				item = Item.byId[Integer.valueOf(split[0])];
+			} catch (NumberFormatException a) {
+				System.out.println("An error occured while parsing item id.\nat: " + split[0]);
+			}
+
+			try {
 				size = Integer.valueOf(split[1]);
-			} catch (NumberFormatException ex) {
-				System.out.println("An error occured while parsing integer. at:" + split[1]);
+			} catch (NumberFormatException b) {
+				System.out.println("An error occured while parsing item amount.\nat: " + split[1]);
 				return;
 			}
 

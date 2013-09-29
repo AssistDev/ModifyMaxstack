@@ -4,6 +4,8 @@ import java.lang.reflect.Field;
 
 import net.minecraft.server.v1_6_R3.Item;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class ModifyMaxstack extends JavaPlugin {
@@ -20,13 +22,14 @@ public class ModifyMaxstack extends JavaPlugin {
 			try {
 				item = Item.byId[Integer.valueOf(split[0])];
 			} catch (NumberFormatException a) {
-				System.out.println("An error occured while parsing item id.\nat: " + split[0]);
+				Bukkit.getConsoleSender().sendMessage("[ModifyMaxstack] " + ChatColor.RED + "An error occured while parsing item id. '" + split[0] + "'");
+				return;
 			}
 
 			try {
 				size = Integer.valueOf(split[1]);
 			} catch (NumberFormatException b) {
-				System.out.println("An error occured while parsing item amount.\nat: " + split[1]);
+				Bukkit.getConsoleSender().sendMessage("[ModifyMaxstack] " + ChatColor.RED + "An error occured while parsing item amount. '" + split[1] + "'");
 				return;
 			}
 
